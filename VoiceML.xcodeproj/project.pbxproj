@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1795602101E4D600ECABB5 /* VMLSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17955F2101E4D600ECABB5 /* VMLSpeechRecognizer.swift */; };
+		8B2A63692101F00A00B03F46 /* VoiceML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A63682101F00A00B03F46 /* VoiceML.swift */; };
 		B03FB7782101BEC7009669A0 /* VoiceML.h in Headers */ = {isa = PBXBuildFile; fileRef = B03FB7762101BEC7009669A0 /* VoiceML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B17955F2101E4D600ECABB5 /* VMLSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMLSpeechRecognizer.swift; sourceTree = "<group>"; };
+		8B2A63682101F00A00B03F46 /* VoiceML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceML.swift; sourceTree = "<group>"; };
 		B03FB7732101BEC7009669A0 /* VoiceML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VoiceML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03FB7762101BEC7009669A0 /* VoiceML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceML.h; sourceTree = "<group>"; };
 		B03FB7772101BEC7009669A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +51,8 @@
 			isa = PBXGroup;
 			children = (
 				B03FB7762101BEC7009669A0 /* VoiceML.h */,
+				8B2A63682101F00A00B03F46 /* VoiceML.swift */,
+				8B17955F2101E4D600ECABB5 /* VMLSpeechRecognizer.swift */,
 				B03FB7772101BEC7009669A0 /* Info.plist */,
 			);
 			path = VoiceML;
@@ -95,6 +101,7 @@
 				TargetAttributes = {
 					B03FB7722101BEC7009669A0 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -130,6 +137,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B1795602101E4D600ECABB5 /* VMLSpeechRecognizer.swift in Sources */,
+				8B2A63692101F00A00B03F46 /* VoiceML.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +268,7 @@
 		B03FB77C2101BEC7009669A0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -268,7 +278,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VoiceML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -277,6 +287,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.SysJ.VoiceML;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -285,6 +296,7 @@
 		B03FB77D2101BEC7009669A0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -294,7 +306,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VoiceML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
