@@ -13,13 +13,13 @@ import CoreML
 class VMLClassifier {
     private let model = VMLModel()
     
-    func analyze(text: String) -> String? {
+    func analyze(text: String) -> (String?, Double?) {
         let counts = bagOfWords(text: text)
         do {
             let prediction = try model.prediction(text: counts)
-            return prediction.label
+            return (prediction.label, prediction.labelProbability[prediction.label])
         } catch {
-            return nil
+            return (nil, nil)
         }
     }
     

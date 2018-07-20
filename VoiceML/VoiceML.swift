@@ -82,5 +82,5 @@ public protocol VoiceMLDelegate: NSObjectProtocol {
     func audioRecordingFailed(error: String)
     func audioRecordingStarted()
     func audioRecordingResult(_ result: String?)
-    func getAnalyzedResult(_ result: String?)
+    func getAnalyzedResult(_ result: (String?, Double?))
 }
