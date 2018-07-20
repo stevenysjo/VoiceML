@@ -12,6 +12,14 @@ import Speech
 public class VoiceML: NSObject, SFSpeechRecognizerDelegate {
     let locale: Locale
     weak var delegate: VoiceMLDelegate?
+    var audioRecorder: VMLAudioRecorder?
+    let classifier = VMLClassifier()
+    
+    var isAudioEngineRunning: Bool {
+        get {
+            return audioRecorder?.isAudioEngineRunning == true
+        }
+    }
     
     lazy var speechRecognizer: SFSpeechRecognizer? = {
         let sf = SFSpeechRecognizer(locale: locale)
@@ -26,13 +34,50 @@ public class VoiceML: NSObject, SFSpeechRecognizerDelegate {
     }
 
     public func checkAuthorization() {
-        SFSpeechRecognizer.requestAuthorization { (status) in
+        VMLAuthorizer.requestAuthorization { (status) in
             self.delegate?.vmlAuthorizationResult(status: status)
         }
     }
     
+    public func startRecording() {
+        stopRecording()
+        guard let sr = speechRecognizer else {
+            return
+        }
+        audioRecorder = VMLAudioRecorder(withSpeechRecognizer: sr, delegate: self)
+        audioRecorder?.startRecording()
+    }
+    
+    public func stopRecording() {
+        audioRecorder?.stopRecording()
+    }
+    
+    func analyzeText(_ text: String) {
+//        delegate?.getAnalyzeResult(classifier.analyze(text: text))
+    }
+}
+
+extension VoiceML: VMLAudioRecorderDelegate {
+    func audioRecordingFailed(error: String) {
+        delegate?.audioRecordingFailed(error: error)
+    }
+    
+    func audioRecordingStarted() {
+        delegate?.audioRecordingStarted()
+    }
+    
+    func audioRecordingResult(_ result: String?) {
+        delegate?.audioRecordingResult(result)
+        if let r = result {
+            analyzeText(r)
+        }
+    }
 }
 
 public protocol VoiceMLDelegate: NSObjectProtocol {
-    func vmlAuthorizationResult(status: SFSpeechRecognizerAuthorizationStatus)
+    func vmlAuthorizationResult(status: VMLAuthorizationStatus)
+    func audioRecordingFailed(error: String)
+    func audioRecordingStarted()
+    func audioRecordingResult(_ result: String?)
+//    func getAnalyzeResult(_ result: VMLModelOutput?)
 }

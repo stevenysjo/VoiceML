@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B1795602101E4D600ECABB5 /* VMLSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17955F2101E4D600ECABB5 /* VMLSpeechRecognizer.swift */; };
 		8B2A63692101F00A00B03F46 /* VoiceML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A63682101F00A00B03F46 /* VoiceML.swift */; };
 		B03FB7782101BEC7009669A0 /* VoiceML.h in Headers */ = {isa = PBXBuildFile; fileRef = B03FB7762101BEC7009669A0 /* VoiceML.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B03FB77F2101F670009669A0 /* VMLAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FB77E2101F670009669A0 /* VMLAuthorizer.swift */; };
+		B03FB7AF2102018B009669A0 /* VMLAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FB7AE2102018B009669A0 /* VMLAudioRecorder.swift */; };
+		B03FB7B121020D58009669A0 /* VMLClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FB7B021020D58009669A0 /* VMLClassifier.swift */; };
+		B03FB7B321021195009669A0 /* VMLModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B03FB7B221021195009669A0 /* VMLModel.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B17955F2101E4D600ECABB5 /* VMLSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMLSpeechRecognizer.swift; sourceTree = "<group>"; };
 		8B2A63682101F00A00B03F46 /* VoiceML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceML.swift; sourceTree = "<group>"; };
 		B03FB7732101BEC7009669A0 /* VoiceML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VoiceML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03FB7762101BEC7009669A0 /* VoiceML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceML.h; sourceTree = "<group>"; };
 		B03FB7772101BEC7009669A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B03FB77E2101F670009669A0 /* VMLAuthorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMLAuthorizer.swift; sourceTree = "<group>"; };
+		B03FB7AE2102018B009669A0 /* VMLAudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMLAudioRecorder.swift; sourceTree = "<group>"; };
+		B03FB7B021020D58009669A0 /* VMLClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMLClassifier.swift; sourceTree = "<group>"; };
+		B03FB7B221021195009669A0 /* VMLModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = VMLModel.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,10 @@
 			children = (
 				B03FB7762101BEC7009669A0 /* VoiceML.h */,
 				8B2A63682101F00A00B03F46 /* VoiceML.swift */,
-				8B17955F2101E4D600ECABB5 /* VMLSpeechRecognizer.swift */,
+				B03FB77E2101F670009669A0 /* VMLAuthorizer.swift */,
+				B03FB7AE2102018B009669A0 /* VMLAudioRecorder.swift */,
+				B03FB7B021020D58009669A0 /* VMLClassifier.swift */,
+				B03FB7B221021195009669A0 /* VMLModel.mlmodel */,
 				B03FB7772101BEC7009669A0 /* Info.plist */,
 			);
 			path = VoiceML;
@@ -137,8 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1795602101E4D600ECABB5 /* VMLSpeechRecognizer.swift in Sources */,
 				8B2A63692101F00A00B03F46 /* VoiceML.swift in Sources */,
+				B03FB7B321021195009669A0 /* VMLModel.mlmodel in Sources */,
+				B03FB77F2101F670009669A0 /* VMLAuthorizer.swift in Sources */,
+				B03FB7B121020D58009669A0 /* VMLClassifier.swift in Sources */,
+				B03FB7AF2102018B009669A0 /* VMLAudioRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +290,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VoiceML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +318,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VoiceML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
