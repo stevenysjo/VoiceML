@@ -9,20 +9,20 @@
 import Foundation
 import Speech
 
+@available(iOS 10.0, *)
 public class VoiceML: NSObject, SFSpeechRecognizerDelegate {
     let locale: Locale
     weak var delegate: VoiceMLDelegate?
     var audioRecorder: VMLAudioRecorder?
-    let classifier = VMLClassifier()
     
-    var isAudioEngineRunning: Bool {
+    public var isAudioEngineRunning: Bool {
         get {
             return audioRecorder?.isAudioEngineRunning == true
         }
     }
     
     lazy var speechRecognizer: SFSpeechRecognizer? = {
-        let sf = SFSpeechRecognizer(locale: locale)
+        let sf = SFSpeechRecognizer(locale: self.locale)
         sf?.delegate = self
         return sf
     }()
@@ -53,10 +53,13 @@ public class VoiceML: NSObject, SFSpeechRecognizerDelegate {
     }
     
     func analyzeText(_ text: String) {
-//        delegate?.getAnalyzeResult(classifier.analyze(text: text))
+        if #available(iOS 11.0, *) {
+            delegate?.getAnalyzedResult(VMLClassifier().analyze(text: text))
+        }
     }
 }
 
+@available(iOS 10.0, *)
 extension VoiceML: VMLAudioRecorderDelegate {
     func audioRecordingFailed(error: String) {
         delegate?.audioRecordingFailed(error: error)
@@ -79,5 +82,5 @@ public protocol VoiceMLDelegate: NSObjectProtocol {
     func audioRecordingFailed(error: String)
     func audioRecordingStarted()
     func audioRecordingResult(_ result: String?)
-//    func getAnalyzeResult(_ result: VMLModelOutput?)
+    func getAnalyzedResult(_ result: String?)
 }

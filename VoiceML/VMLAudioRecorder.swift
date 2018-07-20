@@ -9,6 +9,7 @@
 import Foundation
 import Speech
 
+@available(iOS 10.0, *)
 class VMLAudioRecorder {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -44,7 +45,10 @@ class VMLAudioRecorder {
         }
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        let inputNode = audioEngine.inputNode
+        guard let inputNode = audioEngine.inputNode else {
+            delegate?.audioRecordingFailed(error: "Unable to create an Input Node object")
+            return
+        }
         guard let recognitionRequest = recognitionRequest else {
             delegate?.audioRecordingFailed(error: "Unable to create an SFSpeechAudioBufferRecognitionRequest object")
             return

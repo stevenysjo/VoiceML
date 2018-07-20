@@ -11,13 +11,17 @@ import Speech
 
 class VMLAuthorizer: NSObject {
     static func requestAuthorization(_ completion:@escaping (_ status: VMLAuthorizationStatus)->()) {
-        SFSpeechRecognizer.requestAuthorization { (status) in
-            switch status {
-            case .notDetermined: completion(.notDetermined)
-            case .denied: completion(.denied)
-            case .restricted: completion(.restricted)
-            case .authorized: completion(.authorized)
+        if #available(iOS 10.0, *) {
+            SFSpeechRecognizer.requestAuthorization { (status) in
+                switch status {
+                case .notDetermined: completion(.notDetermined)
+                case .denied: completion(.denied)
+                case .restricted: completion(.restricted)
+                case .authorized: completion(.authorized)
+                }
             }
+        } else {
+            completion(.denied)
         }
     }
 }
